@@ -1,0 +1,500 @@
+   19  rm test_csbrk test_csbrk.c
+   20  git restore bump_test.o coalesce_check.o quicklist_check quicklist_check.o
+   21  git status
+   22  git add Makefile bump_test.c coalesce_check.c quicklist_check.c
+   23  git commit -m "Update course testing infrastructure"
+   24  git push
+   25  git status
+   26  make test_week2
+   27  make test_week2
+   28  git restore --source=406abdc -- umalloc.c
+   29  git diff
+   30  make test_week2
+   31  git status
+   32  git restore bump_test.o coalesce_check.o quicklist_check quicklist_check.o
+   33  git status
+   34  sed -n '1,90p' umalloc.c
+   35  sed -n '390,530p' umalloc.c
+   36  grep -n -E "arena|extend|csbrk" umalloc.c
+   37  make
+   38  make
+   39  make
+   40  make
+   41  make test_week2
+   42  sed -n '85,155p' umalloc.c
+   43  sed -n '220,390p' umalloc.c
+   44  make
+   45  make test_week2
+   46  make test_week2 | tail -n 12
+   47  make test_week2 | tail -n 12
+   48  make test_week2 | tail -n 12
+   49  grep -n -A25 -B5 "performance_score" driver.py
+   50  sed -n '130,225p' umalloc.c
+   51  grep -n -E "performance_target|utilization_target" driver.py
+   52  make test_week2
+   53  make gprof_performance
+   54  ./gprof_performance
+   55  grep -n -E "gprof|performance|profile|^.*:" Makefile
+   56  cp umalloc.c umalloc_profile.c
+   57  sed -i '1i void record_coalesce(void);' umalloc_profile.c
+   58  sed -i 's/bool coalesce().*{/bool coalesce() { record_coalesce();/g' umalloc_profile.c
+   59  sed -i '/bool coalesce()/!b;n;s/{/{ record_coalesce();/' umalloc_profile.c
+   60  gcc -Wall -O2 -Werror -g3 -pg -c umalloc_profile.c -o gprof_umalloc.o
+   61  gcc -Wall -O2 -Werror -g3 -pg   -Wl,--wrap=umalloc -Wl,--wrap=ufree   -o gprof_performance   performance.c csbrk.o gprof_umalloc.o err_handler.o   support.o check_heap.o coalesce_check.o
+   62  ./gprof_performance
+   63  ./gprof_performance traces/week2/basic/random.rep
+   64  ls -l gmon.out
+   65  gprof ./gprof_performance gmon.out | head -n 60
+   66  sed -n '1,130p' umalloc.c
+   67  make
+   68  make test_week2
+   69  make
+   70  tail -n 60 performance.c
+   71  make performance
+   72  ./performance traces/week2/basic/random.rep
+   73  make performance
+   74  ./performance traces/week2/basic/random.rep
+   75  make performance
+   76  ./performance traces/week2/basic/random.rep
+   77  make performance
+   78  make performance
+   79  ./performance traces/week2/basic/random.rep
+   80  make performance && ./performance traces/week2/basic/random.rep
+   81  make performance && ./performance traces/week2/basic/random.rep
+   82  make performance && ./performance traces/week2/basic/random.rep
+   83  cp umalloc.c umalloc_profile.c
+   84  sed -i '1i void record_coalesce(void);' umalloc_profile.c
+   85  sed -i 's/bool coalesce().*{/bool coalesce() { record_coalesce();/g' umalloc_profile.c
+   86  sed -i '/bool coalesce()/!b;n;s/{/{ record_coalesce();/' umalloc_profile.c
+   87  gcc -Wall -O2 -Werror -g3 -pg   -c umalloc_profile.c -o gprof_umalloc.o
+   88  gcc -Wall -O2 -Werror -g3 -pg   -Wl,--wrap=umalloc -Wl,--wrap=ufree   -o gprof_performance   performance.c csbrk.o gprof_umalloc.o err_handler.o   support.o check_heap.o coalesce_check.o
+   89  ./gprof_performance traces/week2/basic/random.rep
+   90  gprof ./gprof_performance gmon.out | head -n 35
+   91  cp umalloc.c /tmp/umalloc-maxcache-experiment.c
+   92  cp umalloc.h /tmp/umalloc-maxcache-experiment.h
+   93  git show 406abdc:umalloc.c > /tmp/umalloc-406abdc.c
+   94  diff -u /tmp/umalloc-406abdc.c umalloc.c | head -n 200
+   95  diff -u /tmp/umalloc-406abdc.c umalloc.c | sed -n '200,420p'
+   96  diff -u /tmp/umalloc-406abdc.c umalloc.c | sed -n '420,700p'
+   97  git status
+   98  git log --oneline -8
+   99  git restore .
+  100  rm umalloc_profile.c
+  101  git status
+  102  make test_week2
+  103  git clone git@github.com:quinnray101/cltp-practice-2.git
+  104  ls -la
+  105  cd cltp-practice-2
+  106  pwd
+  107  ls -la
+  108  cat README.md
+  109  git remote -v
+  110  cat Makefile
+  111  make trike
+  112  q
+  113  logout
+  114  git pull
+  115  cd cltp-practice-2
+  116  pwd
+  117  git pull
+  118  make stego
+  119  ls testcases/
+  120  make stego
+  121  chmod +x ref_order
+  122  ls -l ref_order
+  123  make stego
+  124  .bin/orderlogs -f testcases/short_bal
+  125  ./bin/orderlogs -f testcases/short_bal
+  126  gdb bin/orderlogs
+  127  make trike
+  128  make stego
+  129  gdb bin/orderlogs
+  130  make trike
+  131  make stego
+  132  make trike
+  133  make stego
+  134  make trike
+  135  make trike
+  136  make stego
+  137  make trike
+  138  make trike
+  139  make stego
+  140  make stego
+  141  gdb bin/orderlogs
+  142  make trike
+  143  make stego
+  144  make trike
+  145  gdb bin/orderlogs
+  146  make trike
+  147  make stego
+  148  history > shell_logs.txt
+  149  git status
+  150  git diff
+  151  git add reorder.c shell_logs.txt
+  152  git status
+  153  git diff --staged
+  154  git diff --staged
+  155  git status
+  156  git commit -m "fix reorder logic"
+  157  git push
+  158  git status
+  159  cd ..
+  160  pwd
+  161  rm -rf cltp-practice-2
+  162  ls
+  163  git clone git@github.com:quinnray101/cltp-practice-3.git
+  164  ls -la
+  165  cd cltp-practice-3
+  166  pwd
+  167  ls -la
+  168  cat README.md
+  169  touch ~/.gdbinit
+  170  echo "set history save on" >> ~/.gdbinit
+  171  cat ~/.gdbinit
+  172  cat Makefile
+  173  git status
+  174  git commit
+  175  :wq
+  176  make debug
+  177  make check
+  178  gdb mini_ci
+  179  make debug
+  180  make check
+  181  chmod +x mini_ci_reference
+  182  make check
+  183  gdb mini_ci
+  184  make check
+  185  gdb mini_ci
+  186  make clean
+  187  make debug
+  188  make check
+  189  gdb mini_ci
+  190  make clean
+  191  make debug
+  192  make check
+  193  gdb mini_ci
+  194  history > .gdb_history
+  195  history > logs.txt
+  196  gdb mini_ci
+  197  cat .gdb_history >> logs.txt
+  198  cat logs.txt
+  199  git status
+  200  git diff
+  201  git add calculator.c
+  202  git add logs.txt
+  203  git status
+  204  git diff --staged
+  205  git commit
+  206  git commit -m "fix invalid operation handling"
+  207  git push
+  208  git status
+  209  cd ..
+  210  pwd
+  211  rm -rf cltp-practice-3
+  212  git clone git@github.com:quinnray101/cltp-practice-4.git
+  213  ls -la
+  214  cd cltp-practice-4
+  215  pwd
+  216  ls -la
+  217  cat README.md
+  218  make doc
+  219  make grumpy
+  220  chmod +x trie_ref
+  221  make doc
+  222  make grumpy
+  223  gdb  bin/trie_ref
+  224  make doc
+  225  make grumpy
+  226  gdb second_trie
+  227  make doc
+  228  make grumpy
+  229  gdb ./bin/second_trie
+  230  make doc
+  231  make grumpy
+  232  make doc
+  233  make dopey
+  234  make grumpy
+  235  make doc
+  236  make grumpy
+  237  make doc
+  238  make grumpy
+  239  make doc
+  240  make grumpy
+  241  make doc
+  242  make grumpy
+  243  history > shell_logs.txt
+  244  git status
+  245  git diff
+  246  git add trie.c
+  247  history > shell_logs.txt
+  248  rm -rf .gdb_history
+  249  git satus
+  250  git status
+  251  git add shell_logs.txt
+  252  git diff --staged
+  253  git status
+  254  git commit
+  255  git commit -m "fix trie"
+  256  git push
+  257  git status
+  258  cd ..
+  259  pwd
+  260  rm -rf cltp-practice-4
+  261  git clone git@github.com:quinnray101/cltp-practice-5.git
+  262  ls -la
+  263   cd cltp-practice-5
+  264  pwd
+  265  ls -la
+  266  touch ~/.gdbinit
+  267  echo "set history on" >> ~/.gdbinit
+  268  ls -la
+  269  pwd
+  270  touch ~/.gdbinit
+  271  touch .gdbinit
+  272  echo "set history save on" >> ~/.gdbinit
+  273  make debug
+  274  make comp
+  275  chmod +x ref.out
+  276  make debug
+  277  make comp
+  278  ls -la testcases
+  279  make debug
+  280  gdb /.bin/a.out
+  281  echo "set history save on" > ~/.gdbinit
+  282  pwd
+  283  make debug
+  284  make comp
+  285  git diff Makefile
+  286  gdb ./bin/a.out
+  287  git clone git@github.com:quinnray101/cltp-practice-6.git
+  288  ls -la
+  289  cd cltp-practice-6
+  290  pwd
+  291  git remote -v
+  292  make mikes
+  293  make potbelly
+  294  make subway
+  295  make cheba
+  296  chmod +x red_sb
+  297  chmod +x ref_sb
+  298  make potbelly
+  299  make cheba
+  300  run bin/sb
+  301  gdb bin/sb
+  302  ./bin/sb -i testcases/catdel.trace
+  303  gdb ./bin/sb
+  304  make potbelly
+  305  make cheba
+  306  gdb bin/sb
+  307  make snarfs
+  308  make potbelly
+  309  gdb bin/sb
+  310  make potbelly
+  311  make cheba
+  312  touch /.shell_logs.txt
+  313  touch shell_logs.txt
+  314  history >> shell_logs.txt
+  315  git status
+  316  git diff
+  317  git add README.md
+  318  git add stringbuilder.c
+  319  add shell_logs.txt
+  320  git add shell_logs.txt
+  321  git add .gdb_history
+  322  git status
+  323  git diff --staged
+  324  git commit -m "fix stringbuilder"
+  325  git push
+  326  git status
+  327  cd ..
+  328  pwd
+  329  rm -rf cltp-practice-6
+  330  chmod +x ref.out
+  331  touch gdbinit
+  332  echo "set save history on" > gdbinit
+  333  make
+  334  make debug
+  335  make comp
+  336  gdb bin/a.out
+  337  make clean
+  338  make debug
+  339  make comp
+  340  gdb bin/a.out
+  341  make debug
+  342  make comp
+  343  gdb bin/a.out
+  344  make debug
+  345  make comp
+  346  touch shell_logs.txt
+  347  history > shell_logs.txt
+  348  git status
+  349  git add grind.c
+  350  git add .gdb_history
+  351  git add README.md
+  352  git add shell_logs.txt
+  353  git status
+  354  git add gdbinit
+  355  git status
+  356  git commit -m "malloc problem"
+  357  git push
+  358  git status
+  359  cd ..
+  360  rm -rf cltp-practice-5
+  361  cd ~/cltp-practice-5
+  362  git status
+  363  git log --oneline -5
+  364  ls
+  365  git restore grind.c ref.out
+  366  rm -rf bin outputs .gdb_history .gdbinit
+  367  git status
+  368  ls -la
+  369  cd ~
+  370  pwd
+  371  ls
+  372  git clone git@github.com:quinnray101/cltp-practice-5.git
+  373  ps -u $USER
+  374  top -u $USER
+  375  logout
+  376  pwd
+  377  git clone git@github.com:cs429-fa2026/proficiency-1-qmr82.git
+  378  ls -la
+  379  cd proficiency-1-qmr82
+  380  pwd
+  381  ls -la
+  382  make debug
+  383  make check
+  384  gdb ./bin/tinyheap
+  385  make clean
+  386  make debug
+  387  make check
+  388  gdb ./bin/tinyheap
+  389  make debug
+  390  make check
+  391  make debug
+  392  make check
+  393  gdb ./bin/tinyheap
+  394  make debug
+  395  gdb ./bin/tinyheap
+  396  make debug
+  397  make check
+  398  make debug
+  399  make debug
+  400  make check
+  401  make debug
+  402  make check
+  403  pwd
+  404  whoami
+  405  ssh quinnray@onyx.cs.utexas.edu
+  406  cd ~
+  407  ls -la
+  408  cd ~/proficiency-1-qmr82
+  409  pwd
+  410  ls -la
+  411  git status
+  412  cd ~
+  413  git clone git@github.com:quinnray101/proficiency-1-qmr82.git proficiency-1-redo
+  414  cd ~/proficiency-1-qmr82
+  415  git remote -v
+  416  cd ~
+  417  git clone git@github.com:cs429-fa2026/proficiency-1-qmr82.git proficiency-1-redo
+  418  cd ~
+  419  git clone --no-local proficiency-1-qmr82 proficiency-1-redo
+  420  cd proficiency-1-redo
+  421  git status
+  422  ls
+  423  pwd
+  424  cd proficiency-1-redo
+  425  pwd
+  426  ls -la
+  427  cat README.md
+  428  make all
+  429  make debug
+  430  make check
+  431  gdb .bin/tinyheap
+  432  gdb ./bin/tinyheap
+  433  make debug
+  434  make all
+  435  make debug
+  436  make check
+  437  make debug
+  438  make check
+  439  gdb --args ./bin/tinyheap -i testcases/edge-and-partial
+  440  gdb ./bin/ref_tinyheap
+  441  gdb ./bin/tinyheap
+  442  make debug
+  443  make all
+  444  make check
+  445  gdb ./bin/tinyheap
+  446  make debug
+  447  make check
+  448  make all
+  449  gdb ./bin/tinyheap
+  450  make debug
+  451  make debug
+  452  make debug
+  453  make check
+  454  history > shell_logs.txt
+  455  git status
+  456  git diff
+  457  git add tinyheap.c
+  458  git add shell_logs.txt
+  459  git add .gdb_history
+  460  git status
+  461  git diff --staged
+  462  git status
+  463  git commit -m "Fix allocation boundary"
+  464  python3 - <<'PY'
+  465  from pathlib import Path
+  466  p = Path("tinyheap.c")
+  467  s = p.read_text()
+  468  old = "allocation_length[start] = 0;"
+  469  new = "allocation_length[start] = allocation_length[start];"
+  470  if s.count(old) != 1:
+  471      print("Practice bug not installed: expected code not found.")
+  472  else:
+  473      p.write_text(s.replace(old, new, 1))
+  474      print("Mystery bug installed. Good luck!")
+  475  PY
+  476  make debug
+  477  make check
+  478  gdb bin/tinyheap
+  479  make debug
+  480  make tests
+  481  make check
+  482  gdb ./bin/tinyheap
+  483  ls testcases
+  484  cat testcases/edge-and-release
+  485  ./bin/tinyheap -i testcases/edge-and-release
+  486  ./ref_tinyheap -i testcases/edge-and-release
+  487  make debug
+  488  make check
+  489  make debug
+  490  gdb ./bin/tinyheap
+  491  make debug
+  492  make check
+  493  make debug
+  494  make check
+  495  touch ~/.gdbinit
+  496  echo "set history save on" >> ~/.gdbinit
+  497  pwd
+  498  make debug
+  499  make comp
+  500  chmod +x ref.out
+  501  make debug
+  502  make clean
+  503  make debug
+  504  make check
+  505  gdb ./bin/a.out
+  506  make clean
+  507  make debug
+  508  make comp
+  509  make clean
+  510  make debug
+  511  make comp
+  512  echo "set history save on" > ~/.gdbinit
+  513  pwd
+  514  cat ~/.gdbinit
+  515  git status
+  516  git status
+  517  git add grind.c
+  518  history > shell_logs.txt
